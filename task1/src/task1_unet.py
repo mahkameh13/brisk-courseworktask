@@ -41,9 +41,8 @@ IMAGE_DIR_Test_path = ROOT / "test" / "images"
 MASKS_DIR_Test_path = ROOT / "test" / "masks"
 
 
-# ---------------------------------------------------------------------------
 # Pair images to masks by filename stem (never by list index)
-# ---------------------------------------------------------------------------
+
 def pair_by_stem(image_dir: Path, mask_dir: Path):
     images = {p.stem: p for p in sorted(image_dir.glob("*.jpg"))}
     masks = {p.stem: p for p in sorted(mask_dir.glob("*.png"))}
@@ -82,10 +81,10 @@ eval_transform = v2.Compose([
 ])
 
 
-# ---------------------------------------------------------------------------
+
 # U-Net (milesial, base 32, 1 channel, 1 class). skips=False zeros encoder
-# maps but keeps concat + parameter count — ablation of INFORMATION only.
-# ---------------------------------------------------------------------------
+# maps but keeps concat + parameter count
+
 class DoubleConv(nn.Module):
     def __init__(self, in_channels, out_channels, mid_channels=None):
         super().__init__()
@@ -162,10 +161,10 @@ class UNet(nn.Module):
         return self.outc(x)  # logits, no sigmoid
 
 
-# ---------------------------------------------------------------------------
+
 # Losses: BCE on logits, soft Dice, combo. Tumours are ~3% of pixels so
 # BCE-only can look good while missing the mass.
-# ---------------------------------------------------------------------------
+
 class SoftDiceLossV1(nn.Module):
     def __init__(self, p=1, smooth=1):
         super().__init__()
