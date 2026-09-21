@@ -1,9 +1,4 @@
-"""
-Exercise 3 - Variational Autoencoder on BRISC
 
-Decoder matches Exercise 2 ConvAutoencoder exactly:
-ConvTranspose 128→64→32→16→1, ReLU, final Sigmoid, from_latent Linear.
-"""
 
 from __future__ import annotations
 
@@ -113,11 +108,7 @@ def train_vae(
     device=None,
     out_dir="outputs/task3",
 ):
-    """Train ConvVAE; mirror Exercise 2 run_ae: Adam 1e-3, checkpoint best val.
-
-    Returns (model, history, best_val). history dicts have keys
-    train, val, recon, kl, mu_abs, sigma.
-    """
+    
     if device is None:
         device = DEVICE
     if train_loader is None or val_loader is None:
