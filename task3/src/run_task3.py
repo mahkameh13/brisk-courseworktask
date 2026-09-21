@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-"""Train two VAE betas, save interpolation/prior figures, score frozen ResNet-18."""
+
 
 from __future__ import annotations
 
