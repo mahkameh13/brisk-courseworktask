@@ -1,4 +1,4 @@
-"""Bonus 4: frozen ImageNet ResNet-18 control on the Exercise 2 split."""
+
 
 from __future__ import annotations
 
