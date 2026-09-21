@@ -1,8 +1,4 @@
-"""Your Exercise 2 data cells, re-rooted off /kaggle/input.
 
-Same transform, same seed 42, same 80/20 split, so every number stays
-comparable to what you got on Kaggle. Set BRISC_ROOT to point elsewhere.
-"""
 import os
 from pathlib import Path
 
@@ -36,8 +32,7 @@ def build(batch_size=64, num_workers=8):
         classification_data_transform, [train_size, val_size], generator=generator
     )
 
-    # num_workers > 0 matters here: the gpu2 nodes have 256 cores and JPEG
-    # decode is what starves an A100, not the forward pass.
+    
     common = dict(batch_size=batch_size, num_workers=num_workers, pin_memory=True,
                   persistent_workers=num_workers > 0)
     train_loader = DataLoader(train_data, shuffle=True, **common)
