@@ -1,22 +1,11 @@
-GPU Jupyter for my_task3.ipynb
-Job 1770691  node gpu30-022  port 9880  A100
+GPU Jupyter for my_task3.ipynb (cluster notes)
 
-=== 1. On your LAPTOP (leave this running) ===
-The name login01.hhlr-gu.hhlr.de is WRONG (DNS does not know it).
-Use the SAME host you already use to ssh into this cluster.
+Use the login host you already SSH to (not a broken DNS name).
 
-Template (replace HOST with that name):
-ssh -N -L 9880:gpu30-022:9880 momeni@HOST
+Tunnel template:
+  ssh -N -L LOCALPORT:GPUNODE:PORT USER@LOGIN_HOST
 
-Example if you normally run:  ssh momeni@fuchs.hhlr-gu.de
-then run:                    ssh -N -L 9880:gpu30-022:9880 momeni@fuchs.hhlr-gu.de
-
-=== 2. In the browser ===
-http://127.0.0.1:9880/lab?token=a49577f8d3eed2f539649d594ede9724a092e5be8a174895
-
-=== 3. Open ===
-/work/dldevel/momeni/my_task3.ipynb
-
-=== 4. Check GPU ===
-import torch
-print(torch.cuda.is_available(), torch.cuda.get_device_name(0))
+Then open http://127.0.0.1:LOCALPORT/lab with the token printed in the job log.
+Open the notebook under your work directory and check:
+  import torch
+  print(torch.cuda.is_available(), torch.cuda.get_device_name(0))

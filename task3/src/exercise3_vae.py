@@ -1,10 +1,7 @@
-"""
-Exercise 3 - Variational Autoencoder on BRISC
+"""Exercise 3 — ConvVAE on BRISC.
 
-Decoder matches Exercise 2 ConvAutoencoder exactly:
-ConvTranspose 128→64→32→16→1, ReLU, final Sigmoid, from_latent Linear.
+Decoder matches the Exercise 2 ConvAE decoder (control).
 """
-
 from __future__ import annotations
 
 import json
@@ -44,7 +41,7 @@ class ConvVAE(nn.Module):
     def __init__(self, latent_dim: int = LATENT_DIM):
         super().__init__()
         self.latent_dim = latent_dim
-        # Same conv trunk as Exercise 2 encoder: 128x128 -> 8x8x128
+        # Encoder trunk: 128x128 -> 8x8x128
         self.encoder = nn.Sequential(
             nn.Conv2d(1, 16, 4, stride=2, padding=1),
             nn.ReLU(),
@@ -58,7 +55,7 @@ class ConvVAE(nn.Module):
         hidden = 128 * 8 * 8
         self.fc_mu = nn.Linear(hidden, latent_dim)
         self.fc_logvar = nn.Linear(hidden, latent_dim)
-        # Exercise 2 from_latent + decoder (unchanged)
+        # from_latent + decoder (Exercise 2 layout)
         self.from_latent = nn.Linear(latent_dim, hidden)
         self.decoder = nn.Sequential(
             nn.ConvTranspose2d(128, 64, 4, stride=2, padding=1),

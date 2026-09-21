@@ -1,10 +1,7 @@
-"""
-Exercise 2 — BRISC CLASSIFICATION images, unsupervised ConvAutoencoder.
-Give this file to Scrimba Explain together with PROMPT.txt.
+"""Exercise 2 — Conv autoencoder on BRISC classification images.
 
-Labels are NEVER used in the loss. They only colour plots and score 5-NN.
+Labels are not used in the loss (only for plots / 5-NN).
 """
-
 from __future__ import annotations
 
 import os

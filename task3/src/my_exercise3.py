@@ -1,10 +1,7 @@
-"""Your copy. Do not edit exercise3_vae.py — that is the working reference.
+"""Student stubs for Exercise 3 (ConvVAE).
 
-Fill one stub at a time. After each stub:
-
-  /work/dldevel/momeni/miniconda3/envs/bachelor-cu/bin/python tests/test_mine.py test_construct
+Implement one piece at a time; run tests/test_task3.py after each change.
 """
-
 from __future__ import annotations
 
 import math

@@ -1,5 +1,4 @@
-"""Bonus 4: frozen ImageNet ResNet-18 control on the Exercise 2 split."""
-
+"""Bonus 4 — frozen ImageNet ResNet-18 features on the Exercise 2 split."""
 from __future__ import annotations
 
 import numpy as np

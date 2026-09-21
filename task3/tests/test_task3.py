@@ -1,3 +1,4 @@
+"""Tests for Exercise 3 and Bonus 4 (CPU-safe)."""
 #!/usr/bin/env python3
 """Assignment tests for Exercise 3 and Bonus 4. CPU-safe. 57 tests."""
 

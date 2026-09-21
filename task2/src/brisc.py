@@ -1,7 +1,7 @@
-"""Your Exercise 2 data cells, re-rooted off /kaggle/input.
+"""BRISC classification loaders (Kaggle-style root).
 
-Same transform, same seed 42, same 80/20 split, so every number stays
-comparable to what you got on Kaggle. Set BRISC_ROOT to point elsewhere.
+Same transform, seed 42, and 80/20 split as the Exercise 2 notebook.
+Override with env BRISC_ROOT if needed.
 """
 import os
 from pathlib import Path
@@ -36,8 +36,7 @@ def build(batch_size=64, num_workers=8):
         classification_data_transform, [train_size, val_size], generator=generator
     )
 
-    # num_workers > 0 matters here: the gpu2 nodes have 256 cores and JPEG
-    # decode is what starves an A100, not the forward pass.
+    # JPEG decode benefits from workers on multi-core GPU nodes.
     common = dict(batch_size=batch_size, num_workers=num_workers, pin_memory=True,
                   persistent_workers=num_workers > 0)
     train_loader = DataLoader(train_data, shuffle=True, **common)
